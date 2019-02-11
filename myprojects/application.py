@@ -10,4 +10,7 @@ def create_app(app_name='SURVEY_API'):
     app.config.from_object('myprojects.config.BaseConfig')
     from myprojects.api import api
     app.register_blueprint(api, url_prefix="/api")
+    from myprojects.models import db
+    db.init_app(app)
+
     return app
