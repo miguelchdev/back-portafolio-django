@@ -5,6 +5,7 @@ application.py
 
 from flask import Flask
 
+
 def create_app(app_name='SURVEY_API'):
     app = Flask(app_name)
     app.config.from_object('myprojects.config.BaseConfig')

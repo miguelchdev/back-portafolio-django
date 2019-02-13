@@ -18,8 +18,11 @@ class Bio(db.Model):
     contacts = db.relationship('Contact', backref="bio", lazy=False)
 
     def to_dict(self):
+        sk = [skill.to_dict() for skill in self.skills]
+        con = {contact.name: contact.link for contact in self.contacts}
         return dict(id=self.id,
-                    name=self.name, role=self.role, about=self.about, skills=[skill.to_dict() for skill in self.skills], contacts={contact.name: contact.link for contact in self.contacts})
+                    name=self.name, role=self.role, about=self.about,
+                    skills=sk, contacts=con)
 
 
 class Project(db.Model):
@@ -32,7 +35,8 @@ class Project(db.Model):
 
     def to_dict(self):
         return dict(id=self.id,
-                    title=self.title, link=self.link, description=self.description, img=self.image)
+                    title=self.title, link=self.link,
+                    description=self.description, img=self.image)
 
 
 class Skill(db.Model):

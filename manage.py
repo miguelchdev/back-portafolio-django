@@ -25,7 +25,8 @@ def shell_ctx():
                 db=db,
                 Bio=Bio,
                 Project=Project,
-                Skill=Skill,Contact=Contact)
+                Skill=Skill, Contact=Contact)
+
 
 if __name__ == '__main__':
     manager.run()
