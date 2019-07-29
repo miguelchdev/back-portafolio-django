@@ -14,11 +14,46 @@ class SchoolSerializer(QueryFieldsMixin, serializers.ModelSerializer):
         model = School
         fields = ('id','name','location','degree','start_date','end_date','url')
 
+class SkillSerializer(QueryFieldsMixin, serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = ('id','name')
+
+
+class ContactSerializer(QueryFieldsMixin, serializers.ModelSerializer):
+    def to_representation(self, obj):
+        return {
+            obj.name: obj.link
+        }
+    class Meta:
+        model = Contact
+        fields = ('name', 'link')
+
 class BioSerializer(QueryFieldsMixin, serializers.ModelSerializer):
     pic = VersatileImageFieldSerializer(sizes='responsive_sizes')
-    jobs = JobSerializer(many=True)
-    education = SchoolSerializer(many=True)
+    jobs = JobSerializer(many=True,required=False)
+    education = SchoolSerializer(many=True,required=False)
+    skills = SkillSerializer(many=True, required=False)
+    social_networks = ContactSerializer(many=True, required=False,source='contacts')
     class Meta:
         model = Bio
-        fields = ('id','name','last_name','role' ,'about','welcome_message','pic','education','jobs')
+        fields = ('id', 'name', 'last_name', 'role', 'about', 'welcome_message',
+                  'pic', 'social_networks', 'skills', 'education', 'jobs')
    
+class ImageSerializer(QueryFieldsMixin, serializers.ModelSerializer):
+    file = VersatileImageFieldSerializer(sizes='responsive_sizes')
+    class Meta:
+        model = Image
+        fields = ('id','file')
+
+class TechnologySerializer(QueryFieldsMixin, serializers.ModelSerializer):
+    class Meta:
+        model = Technology
+        fields = ('id','name')
+
+class ProjectSerializer(QueryFieldsMixin,serializers.ModelSerializer):
+    images = ImageSerializer(many=True,required=False)
+    technologys = TechnologySerializer(many=True,required=False)
+    class Meta:
+        model = Project
+        fields = ('id','title','description','date','link','images','technologys')

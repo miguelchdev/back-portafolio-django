@@ -12,7 +12,7 @@ class Bio(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=25)
-    link = models.CharField(max_length=25)
+    link = models.URLField()
     description = models.TextField()
     date = models.DateField()
 
@@ -53,5 +53,5 @@ class Skill(models.Model):
 class Contact(models.Model):
     bio = models.ForeignKey(Bio,related_name='contacts',on_delete=models.CASCADE)
     name = models.CharField(max_length=25)
-    link = models.CharField(max_length=25)
+    link = models.URLField()
     
