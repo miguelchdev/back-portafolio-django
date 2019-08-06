@@ -25,7 +25,7 @@ SECRET_KEY = '$7*j7=bz#cg1tzz766n%vd2vb3$--*!skq^j5e9wl036ulr)*q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -149,12 +149,12 @@ WSGI_APPLICATION = 'porfolio_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'api',
-        'USER': 'root',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portafolio',
+        'USER': 'miguelangelch',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 

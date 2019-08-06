@@ -12,9 +12,9 @@ django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 djangorestframework-queryfields = "*"
-mysqlclient = "*"
 django-url-filter = "*"
 django-versatileimagefield = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.6"
