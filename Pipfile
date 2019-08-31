@@ -15,6 +15,7 @@ djangorestframework-queryfields = "*"
 django-url-filter = "*"
 django-versatileimagefield = "*"
 psycopg2 = "*"
+django-hvad = "*"
 
 [requires]
 python_version = "3.6"
