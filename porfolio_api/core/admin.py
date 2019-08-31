@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import Bio, Job, School, Image, Project,Technology,Skill,Contact
+from parler.admin import TranslatableAdmin,TranslatableStackedInline,TranslatableTabularInline
 # Register your models here.
 
 
-class JobInline(admin.StackedInline):
+class JobInline(TranslatableStackedInline):
     model = Job
 
 
@@ -21,11 +22,11 @@ class SkillInline(admin.StackedInline):
 class TechnologyInline(admin.TabularInline):
     model = Technology
 
-class SchoolInline(admin.StackedInline):
+class SchoolInline(TranslatableStackedInline):
     model = School
 
 
-class BioAdmin(admin.ModelAdmin):
+class BioAdmin(TranslatableAdmin):
     inlines = [ContactInline,SkillInline,SchoolInline, JobInline]
 
 

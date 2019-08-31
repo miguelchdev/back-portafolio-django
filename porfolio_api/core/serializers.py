@@ -2,7 +2,8 @@ from rest_framework import serializers
 from .models import *
 from drf_queryfields import QueryFieldsMixin
 from versatileimagefield.serializers import VersatileImageFieldSerializer
-
+from parler_rest.serializers import TranslatableModelSerializer
+from parler_rest.fields import TranslatedField,TranslatedFieldsField
 
 class JobSerializer(QueryFieldsMixin, serializers.ModelSerializer):
     class Meta:
@@ -34,6 +35,7 @@ class BioSerializer(QueryFieldsMixin, serializers.ModelSerializer):
     jobs = JobSerializer(many=True,required=False)
     education = SchoolSerializer(many=True,required=False)
     skills = SkillSerializer(many=True, required=False)
+    role = serializers.CharField()
     social_networks = ContactSerializer(many=True, required=False,source='contacts')
     class Meta:
         model = Bio
