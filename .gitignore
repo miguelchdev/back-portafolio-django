@@ -120,3 +120,4 @@ dmypy.json
 # media files
 *.jpg
 *.png
+*.JPG
