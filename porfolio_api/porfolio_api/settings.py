@@ -113,6 +113,7 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
     ]
 }
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -124,9 +125,7 @@ MIDDLEWARE = [
 ]
 
 # add this block below MIDDLEWARE
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-)
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'porfolio_api.urls'
 

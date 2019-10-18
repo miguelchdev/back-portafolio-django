@@ -30,7 +30,7 @@ class BioAdmin(TranslatableAdmin):
     inlines = [ContactInline,SkillInline,SchoolInline, JobInline]
 
 
-class ProjectAdmin(admin.ModelAdmin):
+class ProjectAdmin(TranslatableAdmin):
     inlines = [TechnologyInline,ImageInline]
 
 
