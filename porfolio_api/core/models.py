@@ -57,7 +57,8 @@ class Technology(models.Model):
     project = models.ForeignKey(
         Project, related_name='technologys', on_delete=models.CASCADE)
     name = models.CharField(max_length=25)
-
+    def __str__(self):
+        return  self.name
 
 class Image(models.Model):
     project = models.ForeignKey(
