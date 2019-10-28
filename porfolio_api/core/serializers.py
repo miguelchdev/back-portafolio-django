@@ -38,13 +38,6 @@ class ContactListSerializer(serializers.ListSerializer):
 
 
 class ContactSerializer(QueryFieldsMixin, serializers.ModelSerializer):
-    # name = serializers.CharField()
-    # def to_representation(self, obj):
-    #     res = super(ContactSerializer, self).to_representation(obj)
-    #     return {res['name']: res['link']}
-    #     # return {
-    #     #     obj.name: obj.link
-    #     # }
     class Meta:
         model = Contact
         fields = ('name', 'link')

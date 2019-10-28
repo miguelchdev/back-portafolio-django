@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.contenttypes.admin import GenericTabularInline
 from .models import Bio, Job, School, Image, Project,Technology,Skill,Contact
 from parler.admin import TranslatableAdmin,TranslatableStackedInline,TranslatableTabularInline
 # Register your models here.
@@ -21,6 +22,7 @@ class SkillInline(admin.StackedInline):
 
 class TechnologyInline(admin.TabularInline):
     model = Technology
+    extra = 1
 
 class SchoolInline(TranslatableStackedInline):
     model = School
