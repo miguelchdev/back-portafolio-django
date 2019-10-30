@@ -78,3 +78,9 @@ class Contact(models.Model):
                             on_delete=models.CASCADE)
     name = models.CharField(max_length=25)
     link = models.URLField()
+
+class Service(TranslatableModel):
+    translations = TranslatedFields(
+        title = models.CharField(max_length=25),
+        description = models.TextField(max_length=150)
+    )
