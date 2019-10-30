@@ -81,3 +81,8 @@ class ProjectSerializer(QueryFieldsMixin, serializers.ModelSerializer):
         model = Project
         fields = ('id', 'title', 'description', 'date',
                   'link', 'images', 'technologys')
+
+class ServiceSerializer(QueryFieldsMixin, serializers.ModelSerializer):
+    class Meta:
+        model = Service
+        fields =('id','title','description')
