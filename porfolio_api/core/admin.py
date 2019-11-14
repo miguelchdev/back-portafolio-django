@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
-from .models import Bio, Job, School, Image, Project,Technology,Skill,Contact,Service
-from parler.admin import TranslatableAdmin,TranslatableStackedInline,TranslatableTabularInline
+from .models import Bio, Job, School, Image, Project, Technology, Skill, Contact, Service
+from parler.admin import TranslatableAdmin, TranslatableStackedInline, TranslatableTabularInline
 # Register your models here.
 
 
@@ -12,6 +12,7 @@ class JobInline(TranslatableStackedInline):
 class ContactInline(admin.TabularInline):
     model = Contact
 
+
 class ImageInline(admin.StackedInline):
     model = Image
 
@@ -20,23 +21,27 @@ class SkillInline(admin.StackedInline):
     model = Skill
 
 
-class TechnologyInline(admin.TabularInline):
-    model = Technology
-    extra = 1
+# class TechnologyInline(admin.TabularInline):
+#     model = Technology
+#     extra = 1
+
 
 class SchoolInline(TranslatableStackedInline):
     model = School
 
 
 class BioAdmin(TranslatableAdmin):
-    inlines = [ContactInline,SkillInline,SchoolInline, JobInline]
+    inlines = [ContactInline, SkillInline, SchoolInline, JobInline]
 
 
 class ProjectAdmin(TranslatableAdmin):
-    inlines = [TechnologyInline,ImageInline]
+    inlines = [ImageInline]
+    filter_horizontal = ('technologys',)
+
 
 class ServiceAdmin(TranslatableAdmin):
-     model = Service
+    model = Service
+
 
 admin.site.register(Bio, BioAdmin)
 admin.site.register(Project, ProjectAdmin)

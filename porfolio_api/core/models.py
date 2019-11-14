@@ -19,6 +19,13 @@ class Bio(TranslatableModel):
         return self.about
 
 
+class Technology(models.Model):
+    name = models.CharField(max_length=25)
+
+    def __str__(self):
+        return self.name
+
+
 class Project(TranslatableModel):
     title = models.CharField(max_length=25)
     link = models.URLField()
@@ -26,6 +33,11 @@ class Project(TranslatableModel):
         description=models.TextField()
     )
     date = models.DateField()
+    technologys = models.ManyToManyField(
+        Technology, related_name='technologys')
+
+    def __str__(self):
+        return self.title
 
 
 class Job(TranslatableModel):
@@ -46,19 +58,12 @@ class School(TranslatableModel):
     name = models.CharField(max_length=80)
     location = models.CharField(max_length=80)
     translations = TranslatedFields(
-        degree = models.CharField(max_length=35)
+        degree=models.CharField(max_length=35)
     )
     start_date = models.DateField()
     end_date = models.DateField()
     url = models.URLField()
 
-
-class Technology(models.Model):
-    project = models.ForeignKey(
-        Project, related_name='technologys', on_delete=models.CASCADE)
-    name = models.CharField(max_length=25)
-    def __str__(self):
-        return  self.name
 
 class Image(models.Model):
     project = models.ForeignKey(
@@ -79,8 +84,9 @@ class Contact(models.Model):
     name = models.CharField(max_length=25)
     link = models.URLField()
 
+
 class Service(TranslatableModel):
     translations = TranslatedFields(
-        title = models.CharField(max_length=25),
-        description = models.TextField(max_length=150)
+        title=models.CharField(max_length=25),
+        description=models.TextField(max_length=150)
     )
