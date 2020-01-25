@@ -30,21 +30,13 @@ class ContactListSerializer(serializers.ListSerializer):
 
     def to_representation(self, data):
         iterable = data.all() if isinstance(data, models.Manager) else data
-      
+
         return {
             item.name: item.link for item in iterable
         }
-        
 
 
 class ContactSerializer(QueryFieldsMixin, serializers.ModelSerializer):
-    # name = serializers.CharField()
-    # def to_representation(self, obj):
-    #     res = super(ContactSerializer, self).to_representation(obj)
-    #     return {res['name']: res['link']}
-    #     # return {
-    #     #     obj.name: obj.link
-    #     # }
     class Meta:
         model = Contact
         fields = ('name', 'link')
@@ -67,17 +59,28 @@ class BioSerializer(QueryFieldsMixin, serializers.ModelSerializer):
 
 
 class ImageSerializer(QueryFieldsMixin, serializers.ModelSerializer):
-    file = VersatileImageFieldSerializer(sizes='responsive_sizes')
+    file = VersatileImageFieldSerializer(sizes='banner-sizes')
 
     class Meta:
         model = Image
         fields = ('id', 'file')
 
 
+class TechnologyListSerializer(serializers.ListSerializer):
+
+    def to_representation(self, data):
+        iterable = data.all() if isinstance(data, models.Manager) else data
+
+        return [
+            item.name for item in iterable
+        ]
+
+
 class TechnologySerializer(QueryFieldsMixin, serializers.ModelSerializer):
     class Meta:
         model = Technology
         fields = ('id', 'name')
+        list_serializer_class = TechnologyListSerializer
 
 
 class ProjectSerializer(QueryFieldsMixin, serializers.ModelSerializer):
@@ -88,3 +91,9 @@ class ProjectSerializer(QueryFieldsMixin, serializers.ModelSerializer):
         model = Project
         fields = ('id', 'title', 'description', 'date',
                   'link', 'images', 'technologys')
+
+
+class ServiceSerializer(QueryFieldsMixin, serializers.ModelSerializer):
+    class Meta:
+        model = Service
+        fields = ('id', 'title', 'description')
