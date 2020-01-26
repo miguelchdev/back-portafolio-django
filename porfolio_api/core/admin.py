@@ -21,9 +21,9 @@ class SkillInline(admin.StackedInline):
     model = Skill
 
 
-# class TechnologyInline(admin.TabularInline):
-#     model = Technology
-#     extra = 1
+class TechnologyAdmin(admin.ModelAdmin):
+   model = Technology
+     
 
 
 class SchoolInline(TranslatableStackedInline):
@@ -34,9 +34,9 @@ class BioAdmin(TranslatableAdmin):
     inlines = [ContactInline, SkillInline, SchoolInline, JobInline]
 
 
-class ProjectAdmin(TranslatableAdmin):
+class ProjectAdmin(admin.ModelAdmin):
     inlines = [ImageInline]
-    filter_horizontal = ('technologys',)
+    filter_horizontal = ['technologys']
 
 
 class ServiceAdmin(TranslatableAdmin):
@@ -46,3 +46,4 @@ class ServiceAdmin(TranslatableAdmin):
 admin.site.register(Bio, BioAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Service, ServiceAdmin)
+admin.site.register(Technology, TechnologyAdmin)
