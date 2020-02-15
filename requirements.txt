@@ -6,3 +6,4 @@ django-url-filter
 django-versatileimagefield 
 django-parler 
 django-parler-rest 
+psycopg2
