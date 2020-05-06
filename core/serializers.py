@@ -97,3 +97,11 @@ class ServiceSerializer(QueryFieldsMixin, serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = ('id', 'title', 'description')
+
+
+class EmailSerializer(serializers.Serializer):
+    to_email = serializers.EmailField(required=True)
+    from_email = serializers.EmailField(required=True)
+    reply_to = serializers.EmailField(required=False)
+    body = serializers.CharField(required=True)
+    subject = serializers.CharField(max_length=200)

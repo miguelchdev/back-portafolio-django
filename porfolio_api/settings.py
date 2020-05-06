@@ -11,12 +11,22 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 from django.utils.translation import gettext_lazy as _
 import os
+from .email_info import *
+
+# Seding email
+
+EMAIL_HOST = EMAIL_HOST
+EMAIL_PORT = EMAIL_PORT
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_USE_TLS = EMAIL_USE_TLS
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGUAGES = [
     ('es', _('Spanish')),
-     ('en', _('English')),
+    ('en', _('English')),
 ]
 
 # Quick-start development settings - unsuitable for production
@@ -49,11 +59,11 @@ INSTALLED_APPS = [
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 20,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
-    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning'
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
 }
 VERSATILEIMAGEFIELD_SETTINGS = {
     # The amount of time, in seconds, that references to created images
@@ -193,12 +203,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 PARLER_LANGUAGES = {
     None: (
-        {'code': 'en-us',},
-        {'code': 'es',},
+        {'code': 'en-us', },
+        {'code': 'es', },
     ),
     'default': {
-        'fallbacks': ['en'],          # defaults to PARLER_DEFAULT_LANGUAGE_CODE
-        'hide_untranslated': False,   # the default; let .active_translations() return fallbacks too.
+        # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+        'fallbacks': ['en'],
+        # the default; let .active_translations() return fallbacks too.
+        'hide_untranslated': False,
     }
 }
 
