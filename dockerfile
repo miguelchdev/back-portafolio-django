@@ -5,3 +5,4 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install --default-timeout=100 -r  requirements.txt
 COPY . /code/
+EXPOSE 8000

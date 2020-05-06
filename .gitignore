@@ -121,3 +121,4 @@ dmypy.json
 *.jpg
 *.png
 *.JPG
+porfolio_api/email_info.py

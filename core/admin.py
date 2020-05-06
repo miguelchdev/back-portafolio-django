@@ -22,8 +22,7 @@ class SkillInline(admin.StackedInline):
 
 
 class TechnologyAdmin(admin.ModelAdmin):
-   model = Technology
-     
+    model = Technology
 
 
 class SchoolInline(TranslatableStackedInline):
@@ -34,7 +33,7 @@ class BioAdmin(TranslatableAdmin):
     inlines = [ContactInline, SkillInline, SchoolInline, JobInline]
 
 
-class ProjectAdmin(admin.ModelAdmin):
+class ProjectAdmin(TranslatableAdmin):
     inlines = [ImageInline]
     filter_horizontal = ['technologys']
 
