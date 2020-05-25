@@ -39,6 +39,9 @@ class Project(TranslatableModel):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['-date']
+
 
 class Job(TranslatableModel):
     bio = models.ForeignKey(Bio, related_name='jobs', on_delete=models.CASCADE)
