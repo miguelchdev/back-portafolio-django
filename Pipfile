@@ -17,6 +17,7 @@ django-versatileimagefield = "*"
 psycopg2 = "*"
 django-parler = "*"
 django-parler-rest = "*"
+mysqlclient = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
