@@ -234,5 +234,6 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'  # add this
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # add this
 
-# add the following just below STATIC_URL
+
+# add the following just below STATIC_URLs
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
