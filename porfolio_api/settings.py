@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+import django_heroku
 from django.utils.translation import gettext_lazy as _
 import os
 from .email_info import *
@@ -237,3 +238,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # add this
 
 # add the following just below STATIC_URLs
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+django_heroku.settings(locals())
