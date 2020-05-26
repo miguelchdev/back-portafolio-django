@@ -18,6 +18,8 @@ psycopg2 = "*"
 django-parler = "*"
 django-parler-rest = "*"
 mysqlclient = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.6"
