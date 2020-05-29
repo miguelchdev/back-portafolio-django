@@ -59,7 +59,7 @@ class BioSerializer(QueryFieldsMixin, serializers.ModelSerializer):
 
 
 class ImageSerializer(QueryFieldsMixin, serializers.ModelSerializer):
-    file = VersatileImageFieldSerializer(sizes='banner-sizes')
+    file = serializers.ImageField()
 
     class Meta:
         model = Image
