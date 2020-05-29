@@ -2,6 +2,7 @@ from django.db import models
 from versatileimagefield.fields import VersatileImageField, PPOIField
 from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 
@@ -71,8 +72,9 @@ class School(TranslatableModel):
 class Image(models.Model):
     project = models.ForeignKey(
         Project, related_name='images', on_delete=models.CASCADE)
-    file = VersatileImageField(ppoi_field='ppoi')
-    ppoi = PPOIField('image_ppoi')
+    # file = VersatileImageField(ppoi_field='ppoi')
+    # ppoi = PPOIField('image_ppoi')
+    file = CloudinaryField('image')
 
 
 class Skill(models.Model):

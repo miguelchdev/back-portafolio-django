@@ -37,7 +37,7 @@ LANGUAGES = [
 SECRET_KEY = '$7*j7=bz#cg1tzz766n%vd2vb3$--*!skq^j5e9wl036ulr)*q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'corsheaders',  # add this
     'core',  # add this
     'versatileimagefield',
-    'parler',
+    'parler', 'cloudinary',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -232,9 +232,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # add the following just below STATIC_URL
-MEDIA_URL = '/media/'  # add this
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # add this
+CLOUD_NAME = os.environ.get('CLOUD_NAME', '')
+API_KEY = os.environ.get('API_KEY', '')
+API_SECRET = os.environ.get('API_SECRET', '')
 
+CLOUDINARY = {
+    'cloud_name': CLOUD_NAME,
+    'api_key': API_KEY,
+    'api_secret': API_SECRET,
+}
 
 # add the following just below STATIC_URLs
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
