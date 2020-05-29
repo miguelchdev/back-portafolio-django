@@ -24,7 +24,4 @@ urlpatterns = i18n_patterns(
     path('api/', include('core.urls')),
     prefix_default_language=False      # add this
 )
-# add this
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL,
-#                           document_root=settings.MEDIA_ROOT)
+
