@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+import django_heroku
 from django.utils.translation import gettext_lazy as _
 import os
 from .email_info import *
@@ -36,7 +37,7 @@ LANGUAGES = [
 SECRET_KEY = '$7*j7=bz#cg1tzz766n%vd2vb3$--*!skq^j5e9wl036ulr)*q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -107,13 +108,14 @@ WSGI_APPLICATION = 'porfolio_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'portafolio',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'miguelangelch$portfolio',
         'USER': 'miguelangelch',
-        'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    },
+        'PASSWORD': '4tgqp2fy',
+        # Or an IP Address that your DB is hosted on
+        'HOST': 'miguelangelch.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+    }
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
     #     'NAME': 'postgres',
@@ -183,3 +185,9 @@ CLOUDINARY = {
     'api_key': API_KEY,
     'api_secret': API_SECRET,
 }
+
+
+# add the following just below STATIC_URLs
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+django_heroku.settings(locals())
+

@@ -74,6 +74,7 @@ class Image(models.Model):
     alt = models.CharField(max_length=50, null=True)
 
 
+
 class Skill(models.Model):
     bio = models.ForeignKey(Bio, related_name='skills',
                             on_delete=models.CASCADE)
