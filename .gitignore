@@ -122,3 +122,4 @@ dmypy.json
 *.png
 *.JPG
 porfolio_api/email_info.py
+.vscode/
