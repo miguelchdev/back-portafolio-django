@@ -13,10 +13,10 @@ djangorestframework = "*"
 django-cors-headers = "*"
 djangorestframework-queryfields = "*"
 django-url-filter = "*"
-django-versatileimagefield = "*"
 psycopg2 = "*"
 django-parler = "*"
 django-parler-rest = "*"
+cloudinary = "*"
 
 [requires]
 python_version = "3.7"

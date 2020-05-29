@@ -12,9 +12,9 @@
             "args": ["runserver", "--noreload"],
             "django": true,
             "env": {
-                "CLOUD_NAME": "",
-                "API_KEY": "",
-                "API_SECRET": ""
+                "CLOUD_NAME": "dlx9tvjyb",
+                "API_KEY": "323718581225744",
+                "API_SECRET": "A-K30yHUs0fvq_7wJd0kXclhZeQ"
             }
         }
     ]

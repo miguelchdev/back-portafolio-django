@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import *
 from drf_queryfields import QueryFieldsMixin
-from versatileimagefield.serializers import VersatileImageFieldSerializer
 from parler_rest.serializers import TranslatableModelSerializer
 from parler_rest.fields import TranslatedField, TranslatedFieldsField
 
@@ -44,7 +43,6 @@ class ContactSerializer(QueryFieldsMixin, serializers.ModelSerializer):
 
 
 class BioSerializer(QueryFieldsMixin, serializers.ModelSerializer):
-    pic = VersatileImageFieldSerializer(sizes='responsive_sizes')
     jobs = JobSerializer(many=True, required=False)
     education = SchoolSerializer(many=True, required=False)
     skills = SkillSerializer(many=True, required=False)
@@ -54,16 +52,16 @@ class BioSerializer(QueryFieldsMixin, serializers.ModelSerializer):
 
     class Meta:
         model = Bio
-        fields = ('id', 'name', 'last_name', 'role', 'about', 'welcome_message',
+        fields = ('id', 'pic', 'name', 'last_name', 'role', 'about', 'welcome_message',
                   'pic', 'social_networks', 'skills', 'education', 'jobs')
 
 
 class ImageSerializer(QueryFieldsMixin, serializers.ModelSerializer):
-    file = VersatileImageFieldSerializer(sizes='banner-sizes')
+    file = serializers.ImageField()
 
     class Meta:
         model = Image
-        fields = ('id', 'file')
+        fields = ('id', 'file', 'alt')
 
 
 class TechnologyListSerializer(serializers.ListSerializer):
