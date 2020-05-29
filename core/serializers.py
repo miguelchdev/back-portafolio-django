@@ -43,6 +43,7 @@ class ContactSerializer(QueryFieldsMixin, serializers.ModelSerializer):
 
 
 class BioSerializer(QueryFieldsMixin, serializers.ModelSerializer):
+    pic = serializers.ImageField()
     jobs = JobSerializer(many=True, required=False)
     education = SchoolSerializer(many=True, required=False)
     skills = SkillSerializer(many=True, required=False)
