@@ -20,7 +20,8 @@ from django.conf.urls.static import static   # add this
 from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = i18n_patterns(
-    path('admin/', admin.site.urls),
+    path('', admin.site.urls),
     path('api/', include('core.urls')),
     prefix_default_language=False      # add this
 )
+
