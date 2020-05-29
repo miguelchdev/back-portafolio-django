@@ -1,5 +1,4 @@
 from django.db import models
-from versatileimagefield.fields import VersatileImageField, PPOIField
 from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
 from cloudinary.models import CloudinaryField
@@ -13,8 +12,7 @@ class Bio(TranslatableModel):
         about=models.TextField(),
         welcome_message=models.TextField(), role=models.CharField(max_length=25)
     )
-    pic = VersatileImageField(ppoi_field='ppoi')
-    ppoi = PPOIField('pic_ppoi')
+    pic = CloudinaryField(null=True)
 
     def __unicode__(self):
         return self.about
@@ -72,9 +70,9 @@ class School(TranslatableModel):
 class Image(models.Model):
     project = models.ForeignKey(
         Project, related_name='images', on_delete=models.CASCADE)
-    # file = VersatileImageField(ppoi_field='ppoi')
-    # ppoi = PPOIField('image_ppoi')
-    file = CloudinaryField('image')
+    file = CloudinaryField()
+    alt = models.CharField(max_length=50, null=True)
+
 
 
 class Skill(models.Model):

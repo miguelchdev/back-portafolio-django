@@ -15,6 +15,7 @@ class ContactInline(admin.TabularInline):
 
 class ImageInline(admin.StackedInline):
     model = Image
+    fields = ('file', 'alt')
 
 
 class SkillInline(admin.StackedInline):
