@@ -71,12 +71,13 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware'
+
 ]
 
 # add this block below MIDDLEWARE
@@ -114,7 +115,7 @@ DATABASES = {
         'PASSWORD': '4tgqp2fy',
         'PORT': 5432,
         # Or an IP Address that your DB is hosted on
-        
+
     }
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
@@ -184,11 +185,10 @@ CLOUDINARY = {
     'cloud_name': CLOUD_NAME,
     'api_key': API_KEY,
     'api_secret': API_SECRET,
-    'secure':True
+    'secure': True
 }
 
 
 # add the following just below STATIC_URLs
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 django_heroku.settings(locals())
-
