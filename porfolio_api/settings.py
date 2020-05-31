@@ -107,7 +107,7 @@ WSGI_APPLICATION = 'porfolio_api.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-     'default': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'portafolio2',
         'USER': 'miguelcg',
@@ -184,6 +184,7 @@ CLOUDINARY = {
     'cloud_name': CLOUD_NAME,
     'api_key': API_KEY,
     'api_secret': API_SECRET,
+    'secure':True
 }
 
 
