@@ -18,10 +18,11 @@ from django.urls import path, include, re_path        # add this
 from django.conf import settings             # add this
 from django.conf.urls.static import static   # add this
 from django.conf.urls.i18n import i18n_patterns
+from django.views.generic.base import RedirectView
 
 urlpatterns = i18n_patterns(
-    path('', admin.site.urls),
+    path('content_editor', admin.site.urls),
     path('api/', include('core.urls')),
+    path('', RedirectView.as_view(url='api/', permanent=False)),
     prefix_default_language=False      # add this
 )
-
