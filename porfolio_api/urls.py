@@ -24,5 +24,5 @@ urlpatterns = i18n_patterns(
     path('content_editor', admin.site.urls),
     path('api/', include('core.urls')),
     path('', RedirectView.as_view(url='api/', permanent=False)),
-    prefix_default_language=False      # add this
+    prefix_default_language=True      # add this
 )
