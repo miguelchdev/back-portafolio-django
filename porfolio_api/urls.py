@@ -18,7 +18,6 @@ from django.urls import path, include, re_path        # add this
 from django.conf import settings             # add this
 from django.conf.urls.static import static   # add this
 from django.conf.urls.i18n import i18n_patterns
-from django.urls import reverse
 from django.views.generic.base import RedirectView
 
 urlpatterns = i18n_patterns(
