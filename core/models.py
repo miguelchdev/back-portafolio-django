@@ -71,8 +71,7 @@ class Image(models.Model):
     project = models.ForeignKey(
         Project, related_name='images', on_delete=models.CASCADE)
     file = CloudinaryField()
-    alt = models.CharField(max_length=50, null=True)
-
+    alt = models.CharField(max_length=50, null=True, blank=True)
 
 
 class Skill(models.Model):
