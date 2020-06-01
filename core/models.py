@@ -12,7 +12,7 @@ class Bio(TranslatableModel):
         about=models.TextField(),
         welcome_message=models.TextField(), role=models.CharField(max_length=25)
     )
-    pic = CloudinaryField(null=True)
+    pic = CloudinaryField(null=True, blank=True)
 
     def __unicode__(self):
         return self.about
