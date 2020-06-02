@@ -109,21 +109,9 @@ WSGI_APPLICATION = 'porfolio_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'portafolio2',
-        'USER': 'miguelcg',
-        'PASSWORD': '4tgqp2fy',
-        'PORT': 5432,
-        # Or an IP Address that your DB is hosted on
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'postgres',
-    #     'USER': 'postgres',
-    #     'HOST': 'db',
-    #     'PORT': 5432,
-    # }
 }
 
 
