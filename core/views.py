@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from rest_framework import viewsets
-from rest_framework import status
-from .serializers import *
-from .models import Bio, Project, Service, Technology
-from rest_framework import permissions
+from rest_framework import permissions, status, viewsets
 from rest_framework.response import Response
+
+from .models import Bio, Page, Project, Service, Technology
+from .serializers import *
 from .task import send_email
 
 
@@ -47,3 +46,21 @@ class EmailServiceViewSet(viewsets.ViewSet):
             send_email(from_email, to_email, body, subject, reply_to)
             return Response(serializer.validated_data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=400)
+
+
+class PageViewSet(viewsets.ModelViewSet):
+    serializer_class = PageSerializer
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,)
+    queryset = Page.objects.all()
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            data = {obj.pop('identifier'): obj for obj in serializer.data}
+            return self.get_paginated_response(data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)

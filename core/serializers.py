@@ -1,8 +1,9 @@
-from rest_framework import serializers
-from .models import *
 from drf_queryfields import QueryFieldsMixin
-from parler_rest.serializers import TranslatableModelSerializer
 from parler_rest.fields import TranslatedField, TranslatedFieldsField
+from parler_rest.serializers import TranslatableModelSerializer
+from rest_framework import serializers
+
+from .models import *
 
 
 class JobSerializer(QueryFieldsMixin, serializers.ModelSerializer):
@@ -104,3 +105,59 @@ class EmailSerializer(serializers.Serializer):
     reply_to = serializers.EmailField(required=False)
     body = serializers.CharField(required=True)
     subject = serializers.CharField(max_length=200)
+
+
+class ObjectListSerializer(serializers.ListSerializer):
+
+    def __init__(self, *args, **kwargs):
+        # Don't pass the 'key_field' arg up to the superclass
+        key_field = kwargs.pop('key_field', 'id')
+        # Instantiate the superclass normally
+        super(ObjectListSerializer, self).__init__(*args, **kwargs)
+        self.key_field = key_field
+
+    def to_representation(self, data):
+        iterable = data.all() if isinstance(data, models.Manager) else data
+        return {
+            getattr(item, self.key_field): self.child.to_representation(item) for item in iterable
+        }
+
+
+class ImageContentSerializer(QueryFieldsMixin, serializers.ModelSerializer):
+    file = serializers.ImageField()
+
+    @ classmethod
+    def many_init(cls, *args, **kwargs):
+        # Instantiate the child serializer.
+        kwargs['child'] = cls()
+        # Instantiate the parent list serializer.
+        return ObjectListSerializer(*args, **kwargs)
+
+    class Meta:
+        model = ImageContent
+        fields = ('id', 'file', 'alt')
+
+
+class PageContentSerializer(QueryFieldsMixin, serializers.ModelSerializer):
+    @ classmethod
+    def many_init(cls, *args, **kwargs):
+        # Instantiate the child serializer.
+        kwargs['child'] = cls()
+        # Instantiate the parent list serializer.
+        return ObjectListSerializer(*args, **kwargs)
+
+    def to_representation(self, instance):
+        return instance.content
+
+    class Meta:
+        model = PageContent
+        fields = ('content',)
+
+
+class PageSerializer(QueryFieldsMixin, serializers.ModelSerializer):
+    images = ImageContentSerializer(many=True, key_field="identifier")
+    page_contents = PageContentSerializer(many=True, key_field="identifier")
+
+    class Meta:
+        model = Page
+        fields = ('id', 'title', 'identifier', 'images', 'page_contents')
