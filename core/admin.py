@@ -1,7 +1,11 @@
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
-from .models import Bio, Job, School, Image, Project, Technology, Skill, Contact, Service, Page, PageContent, ImageContent
-from parler.admin import TranslatableAdmin, TranslatableStackedInline, TranslatableTabularInline
+from parler.admin import (TranslatableAdmin, TranslatableStackedInline,
+                          TranslatableTabularInline)
+
+from .models import (Bio, Contact, Image, ImageContent, Job, Page, PageContent,
+                     Project, School, Service, Skill, Technology)
+
 # Register your models here.
 
 
