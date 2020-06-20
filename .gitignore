@@ -125,4 +125,4 @@ dmypy.json
 porfolio_api/email_info.py
 .vscode/
 .vscode/launch.json
-
+core/migrations/
