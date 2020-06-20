@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
-from .models import Bio, Job, School, Image, Project, Technology, Skill, Contact, Service
+from .models import Bio, Job, School, Image, Project, Technology, Skill, Contact, Service, Page, PageContent, ImageContent
 from parler.admin import TranslatableAdmin, TranslatableStackedInline, TranslatableTabularInline
 # Register your models here.
 
@@ -43,7 +43,20 @@ class ServiceAdmin(TranslatableAdmin):
     model = Service
 
 
+class PageContentInline(TranslatableStackedInline):
+    model = PageContent
+
+
+class ImageContentInline(TranslatableStackedInline):
+    model = ImageContent
+
+
+class PageAdmin(TranslatableAdmin):
+    inlines = [PageContentInline, ImageContentInline]
+
+
 admin.site.register(Bio, BioAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Technology, TechnologyAdmin)
+admin.site.register(Page, PageAdmin)
