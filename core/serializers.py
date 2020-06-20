@@ -1,8 +1,9 @@
-from rest_framework import serializers
-from .models import *
 from drf_queryfields import QueryFieldsMixin
-from parler_rest.serializers import TranslatableModelSerializer
 from parler_rest.fields import TranslatedField, TranslatedFieldsField
+from parler_rest.serializers import TranslatableModelSerializer
+from rest_framework import serializers
+
+from .models import *
 
 
 class JobSerializer(QueryFieldsMixin, serializers.ModelSerializer):

@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from rest_framework import viewsets
-from rest_framework import status
-from .serializers import *
-from .models import Bio, Project, Service, Technology, Page
-from rest_framework import permissions
+from rest_framework import permissions, status, viewsets
 from rest_framework.response import Response
+
+from .models import Bio, Page, Project, Service, Technology
+from .serializers import *
 from .task import send_email
 
 
