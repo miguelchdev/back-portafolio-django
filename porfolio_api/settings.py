@@ -143,7 +143,7 @@ PARLER_LANGUAGES = {
     ),
     'default': {
         # defaults to PARLER_DEFAULT_LANGUAGE_CODE
-        'fallbacks': ['en'],
+        'fallbacks': ['en-us'],
         # the default; let .active_translations() return fallbacks too.
         'hide_untranslated': False,
     }
