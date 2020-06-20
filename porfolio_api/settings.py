@@ -9,9 +9,11 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+import os
+
 import django_heroku
 from django.utils.translation import gettext_lazy as _
-import os
+
 from .email_info import *
 
 # Seding email
@@ -143,7 +145,7 @@ PARLER_LANGUAGES = {
     ),
     'default': {
         # defaults to PARLER_DEFAULT_LANGUAGE_CODE
-        'fallbacks': ['en'],
+        'fallbacks': ['en-us'],
         # the default; let .active_translations() return fallbacks too.
         'hide_untranslated': False,
     }
