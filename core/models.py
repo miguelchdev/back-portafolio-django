@@ -1,7 +1,7 @@
-from django.db import models
+from cloudinary.models import CloudinaryField
 from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
-from cloudinary.models import CloudinaryField
+
 # Create your models here.
 
 
@@ -91,4 +91,33 @@ class Service(TranslatableModel):
     translations = TranslatedFields(
         title=models.CharField(max_length=25),
         description=models.TextField(max_length=150)
+    )
+
+
+class Page(TranslatableModel):
+    identifier = models.CharField(max_length=100)
+    translations = TranslatedFields(
+        title=models.CharField(max_length=150),
+    )
+
+    def __str__(self):
+        return self.identifier
+
+
+class PageContent(TranslatableModel):
+    page = models.ForeignKey(
+        Page, related_name='page_contents', on_delete=models.CASCADE)
+    identifier = models.CharField(max_length=100)
+    translations = TranslatedFields(
+        content=models.CharField(max_length=255),
+    )
+
+
+class ImageContent(TranslatableModel):
+    page = models.ForeignKey(
+        Page, related_name='images', on_delete=models.CASCADE)
+    identifier = models.CharField(max_length=100)
+    file = CloudinaryField()
+    translations = TranslatedFields(
+        alt=models.CharField(max_length=50, null=True, blank=True),
     )

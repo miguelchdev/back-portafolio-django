@@ -20,5 +20,4 @@ gunicorn = "*"
 django-heroku = "*"
 cloudinary = "*"
 
-[requires]
-python_version = "3.6"
+
