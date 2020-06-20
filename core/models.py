@@ -1,7 +1,7 @@
-from django.db import models
+from cloudinary.models import CloudinaryField
 from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
-from cloudinary.models import CloudinaryField
+
 # Create your models here.
 
 

@@ -1,6 +1,8 @@
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from .views import BioViewSet, ProjectViewSet, ServiceViewSet, TechnologyViewSet, EmailServiceViewSet, PageViewSet
+
+from .views import (BioViewSet, EmailServiceViewSet, PageViewSet,
+                    ProjectViewSet, ServiceViewSet, TechnologyViewSet)
 
 router = DefaultRouter()
 router.register(r'bio', BioViewSet, basename='api-bio')
