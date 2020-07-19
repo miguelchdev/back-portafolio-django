@@ -19,9 +19,11 @@ from django.conf.urls.static import static  # add this
 from django.contrib import admin
 from django.urls import include, path, re_path  # add this
 from django.views.generic.base import RedirectView
+import os
+ADMIN_URL = os.environ.get('ADMIN_URL','admin/')
 
 urlpatterns = i18n_patterns(
-    path('content_editor', admin.site.urls),
+    path(ADMIN_URL, admin.site.urls),
     path('api/', include('core.urls')),
     path('', RedirectView.as_view(url='api/', permanent=False)),
     prefix_default_language=True      # add this
