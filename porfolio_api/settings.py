@@ -14,15 +14,16 @@ import os
 import django_heroku
 from django.utils.translation import gettext_lazy as _
 
-from .email_info import *
+
 
 # Seding email
 
-EMAIL_HOST = EMAIL_HOST
-EMAIL_PORT = EMAIL_PORT
-EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
+EMAIL_PORT = 587  # change your PORT from 465 into 587 it
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER','')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS = True
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -36,7 +37,9 @@ LANGUAGES = [
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$7*j7=bz#cg1tzz766n%vd2vb3$--*!skq^j5e9wl036ulr)*q'
+
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
