@@ -1,2 +1,2 @@
-web: gunicorn porfolio_api.wsgi --graceful-timeout 580
+web: gunicorn porfolio_api.wsgi
 release: python manage.py migrate

@@ -8,7 +8,7 @@ autopep8 = "*"
 pylint = "*"
 
 [packages]
-django = "*"
+django = "==2.2"
 djangorestframework = "*"
 django-cors-headers = "*"
 djangorestframework-queryfields = "*"
@@ -19,5 +19,3 @@ django-parler-rest = "*"
 gunicorn = "*"
 django-heroku = "*"
 cloudinary = "*"
-
-
