@@ -1,2 +1,2 @@
-web: gunicorn porfolio_api.wsgi --timeout 160 --log-file -
+web: gunicorn porfolio_api.wsgi --timeout 230 --log-file -
 release: python manage.py migrate
