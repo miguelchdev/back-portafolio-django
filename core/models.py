@@ -28,6 +28,7 @@ class Technology(models.Model):
 
 class Project(TranslatableModel):
     title = models.CharField(max_length=25)
+    cover = CloudinaryField(default="")
     link = models.URLField()
     translations = TranslatedFields(
         description=models.TextField()
@@ -92,10 +93,11 @@ class Image(models.Model):
 
 
 class Skill(models.Model):
-    bio = models.ForeignKey(Bio,
-                            related_name='skills',
-                            on_delete=models.CASCADE
-                            )
+    bio = models.ForeignKey(
+        Bio,
+        related_name='skills',
+        on_delete=models.CASCADE
+    )
     name = models.CharField(max_length=25)
 
 
