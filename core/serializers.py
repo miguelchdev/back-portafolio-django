@@ -86,10 +86,11 @@ class TechnologySerializer(QueryFieldsMixin, serializers.ModelSerializer):
 class ProjectSerializer(QueryFieldsMixin, serializers.ModelSerializer):
     images = ImageSerializer(many=True, required=False)
     technologys = TechnologySerializer(many=True, required=False)
-
+    cover = serializers.ImageField()
+    
     class Meta:
         model = Project
-        fields = ('id', 'title', 'description', 'date',
+        fields = ('id', 'title', 'cover','description', 'date',
                   'link', 'images', 'technologys')
 
 

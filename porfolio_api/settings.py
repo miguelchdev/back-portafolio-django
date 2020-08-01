@@ -141,6 +141,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
+
+FALLBACK_LANG = os.environ.get('FALLBACK_LANG','es')
+
 PARLER_LANGUAGES = {
     None: (
         {'code': 'en-us', },
@@ -148,7 +151,7 @@ PARLER_LANGUAGES = {
     ),
     'default': {
         # defaults to PARLER_DEFAULT_LANGUAGE_CODE
-        'fallbacks': ['en-us'],
+        'fallbacks': [FALLBACK_LANG],
         # the default; let .active_translations() return fallbacks too.
         'hide_untranslated': False,
     }
