@@ -27,10 +27,10 @@ class Technology(models.Model):
 
 
 class Project(TranslatableModel):
-    title = models.CharField(max_length=25)
     cover = CloudinaryField(default="")
     link = models.URLField()
     translations = TranslatedFields(
+        title=models.CharField(max_length=255),
         description=models.TextField()
     )
     date = models.DateField()
@@ -39,8 +39,7 @@ class Project(TranslatableModel):
         related_name='technologys'
     )
 
-    def __str__(self):
-        return self.title
+    
 
     class Meta:
         ordering = ['-date']
