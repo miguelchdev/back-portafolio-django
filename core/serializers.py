@@ -54,7 +54,7 @@ class BioSerializer(QueryFieldsMixin, serializers.ModelSerializer):
 
     class Meta:
         model = Bio
-        fields = ('id', 'pic', 'name', 'last_name', 'role', 'about', 'welcome_message',
+        fields = ('id', 'pic', 'name', 'last_name', 'role', 'about', 'cv_link', 'welcome_message',
                   'pic', 'social_networks', 'skills', 'education', 'jobs')
 
 
@@ -87,10 +87,10 @@ class ProjectSerializer(QueryFieldsMixin, serializers.ModelSerializer):
     images = ImageSerializer(many=True, required=False)
     technologys = TechnologySerializer(many=True, required=False)
     cover = serializers.ImageField()
-    
+
     class Meta:
         model = Project
-        fields = ('id', 'title', 'cover','description', 'date',
+        fields = ('id', 'title', 'cover', 'description', 'date',
                   'link', 'images', 'technologys')
 
 

@@ -11,7 +11,8 @@ class Bio(TranslatableModel):
     translations = TranslatedFields(
         about=models.TextField(),
         welcome_message=models.TextField(),
-        role=models.CharField(max_length=25)
+        role=models.CharField(max_length=25),
+        cv_link=models.URLField()
     )
     pic = CloudinaryField(null=True, blank=True)
 
