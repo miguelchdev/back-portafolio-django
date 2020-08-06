@@ -15,15 +15,13 @@ import django_heroku
 from django.utils.translation import gettext_lazy as _
 
 
-
 # Seding email
 
 EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
 EMAIL_PORT = 587  # change your PORT from 465 into 587 it
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER','')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = True
-
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -142,12 +140,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-FALLBACK_LANG = os.environ.get('FALLBACK_LANG','es')
+FALLBACK_LANG = os.environ.get('FALLBACK_LANG', 'es')
 
 PARLER_LANGUAGES = {
     None: (
-        {'code': 'en-us', },
         {'code': 'es', },
+        {'code': 'en-us', },
     ),
     'default': {
         # defaults to PARLER_DEFAULT_LANGUAGE_CODE
